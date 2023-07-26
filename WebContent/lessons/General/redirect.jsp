@@ -7,7 +7,9 @@
 <title>HTTP Splitting</title>
 </head>
 <body>
-<% response.sendRedirect("/WebGoat/attack?" +
+<% 
+	final String myPassword = "mypass";
+	response.sendRedirect("/WebGoat/attack?" +
 		        "Screen=" + request.getParameter("Screen") +
 		        "&menu=" + request.getParameter("menu") +
 		        "&fromRedirect=yes&language=" + request.getParameter("language")); 
