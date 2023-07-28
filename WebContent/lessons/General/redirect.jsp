@@ -9,10 +9,12 @@
 <body>
 <% 
 	final String myPassword = "mypass";
+	final String myPassword2 = "mypass2";
+	final String myPassword3 = "mypass3";
 	response.sendRedirect("/WebGoat/attack?" +
 		        "Screen=" + request.getParameter("Screen") +
 		        "&menu=" + request.getParameter("menu") +
-		        "&fromRedirect=yes&language=" + request.getParameter("language")); 
+		        "&fromRedirect=yes&language=" + request.getParameter("language") + "&locale=" + request.getParameter("locale")); 
 %>
 </body>
 </html>
