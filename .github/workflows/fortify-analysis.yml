@@ -38,6 +38,7 @@ jobs:
       # If this run was triggered by a pull request event, then checkout the head of the pull request instead of the merge commit.
       - run: git checkout HEAD^2
         if: ${{ github.event_name == 'pull_request' }}
+      - run: echo ${{ env.TEST_VAR }}
       # Java 8 required by ScanCentral Client and FoD Uploader(Univeral CI Tool)
 #       - name: Setup Java
 #         uses: actions/setup-java@v1
@@ -51,12 +52,12 @@ jobs:
       #   ScanCentral has additional options that should be set for PHP and Python projects
       #   For other build tools, add your build commands to download necessary dependencies and prepare according to Fortify on Demand Packaging documentation.
       #   ScanCentral Client documentation is located at https://www.microfocus.com/documentation/fortify-software-security-center/
-      - name: Download Fortify ScanCentral Client
-        uses: fortify/gha-setup-scancentral-client@v1
-      - name: Package Code + Dependencies
-        run: zip -r package.zip .
-        env:
-          PACKAGE_OPTS: ""
+      # - name: Download Fortify ScanCentral Client
+      #   uses: fortify/gha-setup-scancentral-client@v1
+      # - name: Package Code + Dependencies
+      #   run: zip -r package.zip .
+      #   env:
+      #     PACKAGE_OPTS: ""
 
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       # TODO: Update ENV variables for your application and create the necessary GitHub Secrets.  Helpful hints:
