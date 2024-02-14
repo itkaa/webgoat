@@ -38,7 +38,7 @@ jobs:
       # If this run was triggered by a pull request event, then checkout the head of the pull request instead of the merge commit.
       - run: git checkout HEAD^2
         if: ${{ github.event_name == 'pull_request' }}
-      - run: echo ${{ env.TEST_VAR }}
+      # - run: echo ${{ env.TEST_VAR }}
       # Java 8 required by ScanCentral Client and FoD Uploader(Univeral CI Tool)
 #       - name: Setup Java
 #         uses: actions/setup-java@v1
@@ -84,26 +84,26 @@ jobs:
 
       # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
       # TODO: Review Action inputs. For most users, these will be the same as used in the Perform SAST Scan step.
-      - name: Download Results
-        uses: itkaa/gha-fod-generate-sarif@1.1.6
-        with:
-          base-url: https://api.emea.fortify.com
-          tenant: ${{ secrets.FOD_TENANT }}
-          user: ${{ secrets.FOD_USER }}
-          password: ${{ secrets.FOD_PAT }}
-          release-id: ${{ secrets.FOD_RELEASE_ID }}
-          output: ./sarif/output.sarif
+      # - name: Download Results
+      #   uses: itkaa/gha-fod-generate-sarif@1.1.6
+      #   with:
+      #     base-url: https://api.emea.fortify.com
+      #     tenant: ${{ secrets.FOD_TENANT }}
+      #     user: ${{ secrets.FOD_USER }}
+      #     password: ${{ secrets.FOD_PAT }}
+      #     release-id: ${{ secrets.FOD_RELEASE_ID }}
+      #     output: ./sarif/output.sarif
           
-      - name: Add Secure Code Warrior contextual training to SARIF
-        uses: SecureCodeWarrior/github-action-add-sarif-contextual-training@v1.0.7
-        with:
-          inputSarifFile: sarif/output.sarif
-          outputSarifFile: sarif/output.processed.sarif
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Add Secure Code Warrior contextual training to SARIF
+      #   uses: SecureCodeWarrior/github-action-add-sarif-contextual-training@v1.0.7
+      #   with:
+      #     inputSarifFile: sarif/output.sarif
+      #     outputSarifFile: sarif/output.processed.sarif
+      #     githubToken: ${{ secrets.GITHUB_TOKEN }}
 
 
-      # Import Fortify on Demand results to GitHub Security Code Scanning
-      - name: Import Results
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: ./sarif/output.processed.sarif
+      # # Import Fortify on Demand results to GitHub Security Code Scanning
+      # - name: Import Results
+      #   uses: github/codeql-action/upload-sarif@v1
+      #   with:
+      #     sarif_file: ./sarif/output.processed.sarif
