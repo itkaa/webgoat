@@ -154,7 +154,7 @@ public class XPATHInjection extends LessonAdapter
 	    XPath xPath = factory.newXPath();
 	    InputSource inputSource = new InputSource(new FileInputStream(d));
 	    String expression = "/employees/employee[loginID/text()='"
-		    + username + "' and passwd/text()='" + password + "']";
+		    +  "' and passwd/text()='"  + "']";
 	    nodes = (NodeList) xPath.evaluate(expression, inputSource,
 		    XPathConstants.NODESET);
 	    int nodesLength = nodes.getLength();
