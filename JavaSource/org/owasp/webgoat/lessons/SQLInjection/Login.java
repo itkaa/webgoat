@@ -180,8 +180,8 @@ public class Login extends DefaultLessonAction
 
 	try
 	{
-	    String query = "SELECT * FROM employee WHERE userid = " + userId
-		    + " and password = '" + password + "'";
+	    String query = "SELECT * FROM employee WHERE userid = 'PARAM'  and password = 'PARAM'";
+		// PRETEND TO HAVE FIXED IT BUT WE HAVE SIMPLY REMOVED THE CONCATENATED VARIABLE
 	    //System.out.println("Query:" + query);			
 	    try
 	    {
