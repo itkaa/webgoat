@@ -71,11 +71,11 @@ jobs:
         env:
           FOD_TENANT: ${{ secrets.FOD_TENANT }}
           FOD_USER: ${{ secrets.FOD_USER }}
-          FOD_PASSWORD: MHlVWSMwN1lfbSJackY0SE9KSGwzckpsRXVqeFlU0 # ${{ secrets.FOD_PAT }}
+          FOD_PASSWORD: ${{ secrets.FOD_PAT }}
           FOD_RELEASE: ${{ secrets.FOD_RELEASE_ID }}
           FOD_URL: "https://emea.fortify.com/"
           FOD_API_URL: "https://api.emea.fortify.com/"
-          EXTRA_FOD_SAST_SCAN_OPTS: "-ep 2 -pp 1 -I 1 -apf"
+          #EXTRA_FOD_SAST_SCAN_OPTS: "-ep 2 -pp 1 -I 1 -apf"
           #FOD_UPLOADER_OPTS: "-ep 2 -pp 1 -I 1 -apf"
 #           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
 
